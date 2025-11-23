@@ -26,24 +26,14 @@ export default function App(){
     setMessages(prev=>[...prev,userMsg]);
     setInput('');
     try{
-      const res = await fetch(
-        'https://orange-umbrella-446wg75grw927j76-8000.app.github.dev/api/chat',
-        {
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body:JSON.stringify({message:input, company: company || undefined})
-        }
-      );
-
+      const res = await fetch('http://localhost:8000/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:input, company: company || undefined})});
       const j = await res.json();
       const bot = {role:'assistant', text: j.response || JSON.stringify(j)};
       setMessages(prev=>[...prev, bot]);
-
       if(window.speechSynthesis){
         const ut = new SpeechSynthesisUtterance(bot.text);
         window.speechSynthesis.speak(ut);
       }
-
     }catch(e){
       const bot = {role:'assistant', text: '(failed to reach backend)'};
       setMessages(prev=>[...prev, bot]);
@@ -52,8 +42,7 @@ export default function App(){
 
   const toggleListen = ()=>{
     if(!recognitionRef.current) return alert('SpeechRecognition not supported in this browser');
-    if(!listening){ recognitionRef.current.start(); setListening(true);}
-    else { recognitionRef.current.stop(); setListening(false); }
+    if(!listening){ recognitionRef.current.start(); setListening(true);} else { recognitionRef.current.stop(); setListening(false); }
   }
 
   return (
@@ -75,4 +64,3 @@ export default function App(){
     </div>
   )
 }
-
