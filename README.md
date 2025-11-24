@@ -7,13 +7,6 @@ This repository contains a fully prepared conversational AI agent (chatbot + opt
 - `frontend/` - React-based chat UI using browser SpeechRecognition and speechSynthesis for voice
 - `Dockerfile` + `docker-compose.yml` - Run the backend in Docker
 
-## Important local file included
-The uploaded assignment PDF is available at this path inside the environment and is referenced by the backend as a local source:
-
-**/mnt/data/AI Agent Building Assignment - Eightfold.pdf**
-
-(The backend exposes `/local-assignment` which serves this file when present.)
-
 ## Quickstart - Run locally (without Docker)
 
 ### Prerequisites
