@@ -42,11 +42,4 @@ The uploaded assignment PDF is available at this path inside the environment and
 - The backend `app.agent` runs `run_research`, which calls `run_web_search` and ingests the uploaded PDF at `/mnt/data/AI Agent Building Assignment - Eightfold.pdf`.
 - If `OPENAI_API_KEY` is set, real model calls will be used. Otherwise, the system returns deterministic stubbed outputs so the demo works offline.
 
-## Demo video script (short)
-1. 0:00 - 0:20 Show app and goal.
-2. 0:20 - 1:30 Do a quick "Research Acme Corp" and show summary.
-3. 1:30 - 2:30 Show the agent detecting conflicting numbers and asking to resolve.
 
-## Notes
-- Replace `run_web_search` with SerpAPI / Bing for live web research.
-- Consider adding a vector DB (Pinecone/FAISS) for ingestion and retrieval of long docs.
